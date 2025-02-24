@@ -7,7 +7,7 @@ public class PortalTeleporter : MonoBehaviour {
 	public Transform player;
 	public Transform reciever;
 
-	private bool playerIsOverlapping = false;
+	public bool playerIsOverlapping = false;
 
 	// Update is called once per frame
 	void Update () {
@@ -37,7 +37,7 @@ public class PortalTeleporter : MonoBehaviour {
 		if (other.tag == "Player")
 		{
 			playerIsOverlapping = true;
-            print("true");
+            
 		}
 	}
 
@@ -46,7 +46,7 @@ public class PortalTeleporter : MonoBehaviour {
 		if (other.tag == "Player")
 		{
 			playerIsOverlapping = false;
-            print("false");
+            
 		}
 	}
 }
