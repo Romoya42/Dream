@@ -1,17 +1,30 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UIElements;
 using Cursor = UnityEngine.Cursor;
+using UnityEngine.InputSystem;
 
 public class Controller : MonoBehaviour
 {
     public float MovementSpeed;
-    public float CameraRotateSpeed;
     private float timePassed= 0f;
-    private float Constante = 0.1f;
-
+    public int jumpHigh;
     public GameObject look;
+    private bool isGrounded = true;
+ 
+    
+    void OnCollisionStay()
+    {
+        isGrounded = true;
+    }
+
+    void OnCollisionExit()
+    {
+        isGrounded = false;
+    }
     
     void Update()
     {
@@ -33,30 +46,26 @@ public class Controller : MonoBehaviour
         {
             rigidbody.position += look.transform.right * MovementSpeed * Time.deltaTime;
         }
-
-        if (Input.GetKey(KeyCode.Space))
+        
+        if (Input.GetButtonDown("Jump") && isGrounded)
         {
-            rigidbody.position += transform.up * MovementSpeed * Time.deltaTime * 5;
+            rigidbody.AddForce(jumpHigh > 0 ? Vector3.up * jumpHigh : Vector3.down * jumpHigh, ForceMode.Impulse);
+            isGrounded = false;
         }
-        
-        float h= CameraRotateSpeed * Input.GetAxis("Mouse X");
-        
-
-        transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y + h, transform.eulerAngles.z);
-        
         
         timePassed += Time.deltaTime;
         
-        
+        /*
         if(timePassed > 0.05f)
         {
             transform.localScale = new Vector3(transform.localScale.x+0.001f, transform.localScale.y+0.001f, transform.localScale.z+0.001f);
             timePassed = 0f;
-        } 
+        }*/
         
         
         
         /*
+        
         float scrollFactor = Input.GetAxis("Mouse ScrollWheel");
         
     
