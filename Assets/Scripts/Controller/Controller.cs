@@ -10,6 +10,8 @@ public class Controller : MonoBehaviour
     public float CameraRotateSpeed;
     private float timePassed= 0f;
     private float Constante = 0.1f;
+
+    public GameObject look;
     
     void Update()
     {
@@ -17,24 +19,24 @@ public class Controller : MonoBehaviour
         
         if(Input.GetKey(KeyCode.W))
         {
-            rigidbody.position += transform.forward * MovementSpeed * Time.deltaTime;
+            rigidbody.position += look.transform.forward * MovementSpeed * Time.deltaTime;
         }
         if(Input.GetKey(KeyCode.S))
         {
-            rigidbody.position -= transform.forward * MovementSpeed * Time.deltaTime;
+            rigidbody.position -= look.transform.forward * MovementSpeed * Time.deltaTime;
         }
         if(Input.GetKey(KeyCode.A))
         {
-            rigidbody.position -= transform.right * MovementSpeed * Time.deltaTime;
+            rigidbody.position -= look.transform.right * MovementSpeed * Time.deltaTime;
         } 
         if(Input.GetKey(KeyCode.D))
         {
-            rigidbody.position += transform.right * MovementSpeed * Time.deltaTime;
+            rigidbody.position += look.transform.right * MovementSpeed * Time.deltaTime;
         }
 
         if (Input.GetKey(KeyCode.Space))
         {
-            rigidbody.position += transform.up * MovementSpeed * Time.deltaTime;
+            rigidbody.position += transform.up * MovementSpeed * Time.deltaTime * 5;
         }
         
         float h= CameraRotateSpeed * Input.GetAxis("Mouse X");
