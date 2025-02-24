@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -47,13 +48,23 @@ public class S_Controller : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.lockState = CursorLockMode.Confined;
+        Cursor.visible = false;
 
+    }
+
+    private void OnCollisionStay()
+    {
+        grounded = true;
+    }
+
+    void OnCollisionExit()
+    {
+        grounded = false;
     }
 
     //Le reste
     private void Update()
     {
-        Cursor.visible = false;
         MovePlayer();
         MovePlayerCam();
         
@@ -80,7 +91,7 @@ public class S_Controller : MonoBehaviour
 
 
         //saut
-        if (Input.GetKeyDown(KeyCode.Space) /*&& grounded*/) ///faut modifier pour utiliser la bool _jumpPerformed
+        if (Input.GetButtonDown("Jump") && grounded) ///faut modifier pour utiliser la bool _jumpPerformed
         {
             _rigidbody.AddForce(Vector3.up * JumpForce, ForceMode.Impulse);
         }
