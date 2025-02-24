@@ -1,35 +1,69 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
+using Cursor = UnityEngine.Cursor;
 
 public class Controller : MonoBehaviour
 {
-    public GameObject player;
-    public int speed;
+    public float MovementSpeed;
+    public float CameraRotateSpeed;
+    private float timePassed= 0f;
+    private float Constante = 0.1f;
     
-    void Start()
-    {
-        
-    }
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.UpArrow))
+        Rigidbody rigidbody = GetComponent<Rigidbody>();
+        
+        if(Input.GetKey(KeyCode.W))
         {
-            player.transform.position += Vector3.forward * speed;
+            rigidbody.position += transform.forward * MovementSpeed * Time.deltaTime;
+        }
+        if(Input.GetKey(KeyCode.S))
+        {
+            rigidbody.position -= transform.forward * MovementSpeed * Time.deltaTime;
+        }
+        if(Input.GetKey(KeyCode.A))
+        {
+            rigidbody.position -= transform.right * MovementSpeed * Time.deltaTime;
+        } 
+        if(Input.GetKey(KeyCode.D))
+        {
+            rigidbody.position += transform.right * MovementSpeed * Time.deltaTime;
         }
 
-        if (Input.GetKeyDown(KeyCode.DownArrow))
+        if (Input.GetKey(KeyCode.Space))
         {
-            player.transform.position += Vector3.back * speed;
+            rigidbody.position += transform.up * MovementSpeed * Time.deltaTime;
         }
+        
+        float h= CameraRotateSpeed * Input.GetAxis("Mouse X");
+        
 
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y + h, transform.eulerAngles.z);
+        
+        
+        timePassed += Time.deltaTime;
+        
+        
+        if(timePassed > 0.05f)
         {
-            player.transform.position += Vector3.left * speed;
-        }
-
-        if (Input.GetKeyDown(KeyCode.RightArrow))
+            transform.localScale = new Vector3(transform.localScale.x+0.001f, transform.localScale.y+0.001f, transform.localScale.z+0.001f);
+            timePassed = 0f;
+        } 
+        
+        
+        
+        /*
+        float scrollFactor = Input.GetAxis("Mouse ScrollWheel");
+        
+    
+        if (scrollFactor != 0)
         {
-            player.transform.position += Vector3.right * speed;
+            transform.localScale = transform.localScale * (1f - scrollFactor);
         }
+        */
+        
         
     }
 }
