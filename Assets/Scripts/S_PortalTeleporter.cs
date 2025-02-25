@@ -29,6 +29,8 @@ public class PortalTeleporter : MonoBehaviour {
 
 				playerIsOverlapping = false;
 			}
+			 
+			
 		}
 	}
 
