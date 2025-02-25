@@ -10,7 +10,6 @@ public class S_Portal : MonoBehaviour
     Camera portalCam;
     public Material cameraMat;
 
-
     private void Awake()
     {
         portalCam = GetComponentInChildren<Camera>();
