@@ -400,6 +400,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 525924411629337585, guid: c4ca9d1db8ab24844afb1b96c08a88a4, type: 3}
+      propertyPath: JumpForce
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 525924411629337585, guid: c4ca9d1db8ab24844afb1b96c08a88a4, type: 3}
       propertyPath: _maskGround.m_Bits
       value: 8
       objectReference: {fileID: 0}
@@ -459,6 +463,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 5562935381505198131, guid: c4ca9d1db8ab24844afb1b96c08a88a4, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: 7866945982896999795, guid: 0000000000000000d000000000000000, type: 0}
     - target: {fileID: 6357830574958169906, guid: c4ca9d1db8ab24844afb1b96c08a88a4, type: 3}
       propertyPath: epsilon
       value: 1000
@@ -466,6 +474,18 @@ PrefabInstance:
     - target: {fileID: 6357830574958169906, guid: c4ca9d1db8ab24844afb1b96c08a88a4, type: 3}
       propertyPath: lerpSpeed
       value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 7638888684699082325, guid: c4ca9d1db8ab24844afb1b96c08a88a4, type: 3}
+      propertyPath: m_Mass
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7638888684699082325, guid: c4ca9d1db8ab24844afb1b96c08a88a4, type: 3}
+      propertyPath: m_UseGravity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9171528060065646248, guid: c4ca9d1db8ab24844afb1b96c08a88a4, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.121
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
