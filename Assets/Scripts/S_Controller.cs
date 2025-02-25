@@ -25,7 +25,6 @@ public class S_Controller : MonoBehaviour
     [SerializeField] public float Speed;
     [SerializeField] public float Sensivity;
     [SerializeField] public float JumpForce;
-    [SerializeField] public float FallSpeed;
 
     public Camera Cam;
 
@@ -99,17 +98,10 @@ public class S_Controller : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.LeftShift) /*&& grounded*/) ///faut modifier pour utiliser la bool _jumpPerformed
         {
-            _rigidbody.AddForce(Vector3.down * JumpForce*1.1f, ForceMode.Impulse);
-        }
-        
-        if (!grounded)
-        {
-            _rigidbody.AddForce(Vector3.down * FallSpeed * _rigidbody.mass,ForceMode.Force);
+            _rigidbody.AddForce(Vector3.down * JumpForce, ForceMode.Impulse);
         }
 
     }
-    
-    
 
 
     private void MovePlayerCam()
