@@ -11,7 +11,7 @@ public class S_Controller : MonoBehaviour
     private Vector2 _lookInputs;
     private bool _jumpPerformed;
     private bool grounded = false;
-    
+    bool Magnetic = false;
 
     [SerializeField] private Transform _playerCamera;
     [SerializeField] private Rigidbody _rigidbody;
@@ -28,7 +28,16 @@ public class S_Controller : MonoBehaviour
     public Camera Cam;
 
 
-    
+    //Raycast
+    public LayerMask layersToHit;
+    //private Ray _rayCast;
+    private float maxDistance = 20f;
+
+    public S_Magnet s_Magnet;
+
+    private Transform HitedRayCast;
+
+
 
 
 
@@ -51,17 +60,16 @@ public class S_Controller : MonoBehaviour
     }
 
     //Le reste
-    private void Update()
+    private void FixedUpdate()
     {
         Cursor.visible = false;
         MovePlayer();
+
+    }
+    private void Update()
+    {
         MovePlayerCam();
-        
-
-
-        //print(Input.mousePosition +"moosepos");
-        //print(_lookInputs +"look");
-
+        Raycast();
     }
 
 
@@ -80,16 +88,10 @@ public class S_Controller : MonoBehaviour
 
 
         //saut
-        if (Input.GetKeyDown(KeyCode.Space) /*&& grounded*/) ///faut modifier pour utiliser la bool _jumpPerformed
+        if (Input.GetKeyDown(KeyCode.Space) && grounded) ///faut modifier pour utiliser la bool _jumpPerformed
         {
             _rigidbody.AddForce(Vector3.up * JumpForce, ForceMode.Impulse);
         }
-
-        if (Input.GetKeyDown(KeyCode.LeftShift) /*&& grounded*/) ///faut modifier pour utiliser la bool _jumpPerformed
-        {
-            _rigidbody.AddForce(Vector3.down * JumpForce, ForceMode.Impulse);
-        }
-
     }
 
 
@@ -102,7 +104,60 @@ public class S_Controller : MonoBehaviour
 
     }
 
-    
+    private void Raycast()
+    {
+
+        RaycastHit hitinfo;
+        Ray _rayCast = Cam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
+        
+
+
+        Debug.DrawRay(_rayCast.origin, _rayCast.direction * 20f, Color.green);
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+
+            Magnetic = !Magnetic;
+            print(Magnetic);
+
+
+        }
+
+            if (Input.GetKeyDown(KeyCode.Q))
+            {
+                s_Magnet.Polarity = 1;
+            }
+
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            s_Magnet.Polarity = 0;
+            HitedRayCast = null;
+            s_Magnet.Drop();
+        }
+
+        if (Physics.Raycast(_rayCast, out hitinfo, maxDistance, layersToHit))
+        {
+            Debug.DrawRay(_rayCast.origin, _rayCast.direction * 20f, Color.red);
+
+
+
+            if (Magnetic)
+            {
+                if (HitedRayCast == null)
+                {
+                    
+
+                    HitedRayCast = hitinfo.transform;
+  
+                    s_Magnet.PickUp(HitedRayCast);
+                    print("pick");
+                }
+
+            }
+
+        }
+        
+    }
 }
     
 
