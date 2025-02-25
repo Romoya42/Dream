@@ -62,12 +62,13 @@ public class S_Controller : MonoBehaviour
     //Le reste
     private void FixedUpdate()
     {
-        Cursor.visible = false;
+        
         MovePlayer();
 
     }
     private void Update()
     {
+        Cursor.visible = false;
         MovePlayerCam();
         Raycast();
     }
@@ -114,25 +115,15 @@ public class S_Controller : MonoBehaviour
 
         Debug.DrawRay(_rayCast.origin, _rayCast.direction * 20f, Color.green);
 
-        if (Input.GetKeyDown(KeyCode.E))
-        {
+        
 
-            Magnetic = !Magnetic;
-            print(Magnetic);
-
-
-        }
-
-            if (Input.GetKeyDown(KeyCode.Q))
-            {
-                s_Magnet.Polarity = 1;
-            }
-
+           
         if (Input.GetKeyDown(KeyCode.R))
         {
-            s_Magnet.Polarity = 0;
+            
             HitedRayCast = null;
             s_Magnet.Drop();
+            
         }
 
         if (Physics.Raycast(_rayCast, out hitinfo, maxDistance, layersToHit))
@@ -141,18 +132,17 @@ public class S_Controller : MonoBehaviour
 
 
 
-            if (Magnetic)
+            
+            if (HitedRayCast == null)
             {
-                if (HitedRayCast == null)
+                if (Input.GetKeyDown(KeyCode.E))
                 {
-                    
 
                     HitedRayCast = hitinfo.transform;
-  
                     s_Magnet.PickUp(HitedRayCast);
-                    print("pick");
-                }
 
+                }
+      
             }
 
         }

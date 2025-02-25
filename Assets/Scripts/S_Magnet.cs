@@ -8,7 +8,7 @@ public class S_Magnet : MonoBehaviour
     private Rigidbody rigidbodyHited;
     public Transform HitedRayCast;
     public float lerpSpeed;
-    public int Polarity = 0;
+    
     public float epsilon= 0;
 
 
@@ -47,7 +47,7 @@ public class S_Magnet : MonoBehaviour
         {
 
             Vector3 newPosition = transform.position - HitedRayCast.position;
-            rigidbodyHited.AddForce(newPosition* Polarity * lerpSpeed);
+            rigidbodyHited.AddForce(newPosition * lerpSpeed);
 
 
            /* if (rigidbody.velocity.magnitude > maxSpeed)
