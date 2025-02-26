@@ -7,7 +7,7 @@ public class S_GameManager : MonoBehaviour
 
     public int Lvl;
     public float LimitTimer;
-    public float speedMultiplier = 1.0f; 
+    
     
     
     public S_Lighting Light;
@@ -52,7 +52,7 @@ public class S_GameManager : MonoBehaviour
                 Light.SetAnimationSpeed(0.2f);
                 break;
             default:
-                Light.SetAnimationSpeed(speedMultiplier*1.2f);
+                Light.SetAnimationSpeed(1.2f);
                 break;
         }
     }

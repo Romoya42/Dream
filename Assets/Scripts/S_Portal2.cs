@@ -36,7 +36,7 @@ public class S_Portal2 : MonoBehaviour
         positionDifference = new Vector3(-positionDifference.x, positionDifference.y, -positionDifference.z);
         float targetYRotation = 180f + transform.eulerAngles.y;
 
-        transform.position = destinationPortal.transform.position + positionDifference;
+        transform.position = destinationPortal.transform.position + positionDifference ;
         transform.rotation = Quaternion.Euler(0f, targetYRotation, 0f);
     }
 }
