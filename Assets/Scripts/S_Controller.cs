@@ -10,8 +10,8 @@ public class S_Controller : MonoBehaviour
     private Vector2 _moveInputs;
     private Vector2 _lookInputs;
     private bool _jumpPerformed;
-    private bool grounded = false;
-    bool Magnetic = false;
+    public bool grounded = false;
+    
 
     [SerializeField] private Transform _playerCamera;
     [SerializeField] private Rigidbody _rigidbody;
@@ -31,7 +31,7 @@ public class S_Controller : MonoBehaviour
     //Raycast
     public LayerMask layersToHit;
     //private Ray _rayCast;
-    private float maxDistance = 20f;
+    private float maxDistance = 5f;
 
     public S_Magnet s_Magnet;
 
@@ -73,15 +73,10 @@ public class S_Controller : MonoBehaviour
         Raycast();
     }
 
-
-
-
-
-
     private void MovePlayer() //movement du joueur
     {
 
-        if (Physics.CheckSphere(_groundCheck.position, 0.1f, _maskGround)) grounded = true; else grounded = false;
+        if (Physics.CheckSphere(_groundCheck.position, 0.4f, _maskGround)) grounded = true; else grounded = false;
 
 
         Vector3 MoveVector = transform.TransformDirection(_moveInputs.x, 0f, _moveInputs.y) * Speed;
@@ -89,9 +84,11 @@ public class S_Controller : MonoBehaviour
 
 
         //saut
-        if (Input.GetKeyDown(KeyCode.Space) && grounded) ///faut modifier pour utiliser la bool _jumpPerformed
+        if (Input.GetButtonDown("Jump") && grounded) 
         {
+            _rigidbody.linearVelocity = new Vector3(_rigidbody.linearVelocity.x, 0f, _rigidbody.linearVelocity.z); 
             _rigidbody.AddForce(Vector3.up * JumpForce, ForceMode.Impulse);
+
         }
     }
 
@@ -113,7 +110,7 @@ public class S_Controller : MonoBehaviour
         
 
 
-        Debug.DrawRay(_rayCast.origin, _rayCast.direction * 20f, Color.green);
+        Debug.DrawRay(_rayCast.origin, _rayCast.direction * maxDistance, Color.green);
 
         
 
@@ -128,7 +125,7 @@ public class S_Controller : MonoBehaviour
 
         if (Physics.Raycast(_rayCast, out hitinfo, maxDistance, layersToHit))
         {
-            Debug.DrawRay(_rayCast.origin, _rayCast.direction * 20f, Color.red);
+            Debug.DrawRay(_rayCast.origin, _rayCast.direction * maxDistance, Color.red);
 
 
 
