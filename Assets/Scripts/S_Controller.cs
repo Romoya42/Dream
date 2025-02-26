@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -11,7 +10,7 @@ public class S_Controller : MonoBehaviour
     private Vector2 _moveInputs;
     private Vector2 _lookInputs;
     private bool _jumpPerformed;
-    private bool grounded = false;
+    public bool grounded = false;
     
 
     [SerializeField] private Transform _playerCamera;
@@ -25,12 +24,20 @@ public class S_Controller : MonoBehaviour
     [SerializeField] public float Speed;
     [SerializeField] public float Sensivity;
     [SerializeField] public float JumpForce;
-    [SerializeField] public float FallSpeed;
 
     public Camera Cam;
 
 
-    
+    //Raycast
+    public LayerMask layersToHit;
+    //private Ray _rayCast;
+    private float maxDistance = 5f;
+
+    public S_Magnet s_Magnet;
+
+    private Transform HitedRayCast;
+
+
 
 
 
@@ -49,42 +56,27 @@ public class S_Controller : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.lockState = CursorLockMode.Confined;
-        Cursor.visible = false;
 
-    }
-
-    private void OnCollisionStay()
-    {
-        grounded = true;
-    }
-
-    void OnCollisionExit()
-    {
-        grounded = false;
     }
 
     //Le reste
-    private void Update()
+    private void FixedUpdate()
     {
-        MovePlayer();
-        MovePlayerCam();
         
-
-
-        //print(Input.mousePosition +"moosepos");
-        //print(_lookInputs +"look");
+        MovePlayer();
 
     }
-
-
-
-
-
+    private void Update()
+    {
+        Cursor.visible = false;
+        MovePlayerCam();
+        Raycast();
+    }
 
     private void MovePlayer() //movement du joueur
     {
 
-        if (Physics.CheckSphere(_groundCheck.position, 0.1f, _maskGround)) grounded = true; else grounded = false;
+        if (Physics.CheckSphere(_groundCheck.position, 0.4f, _maskGround)) grounded = true; else grounded = false;
 
 
         Vector3 MoveVector = transform.TransformDirection(_moveInputs.x, 0f, _moveInputs.y) * Speed;
@@ -92,24 +84,13 @@ public class S_Controller : MonoBehaviour
 
 
         //saut
-        if (Input.GetButtonDown("Jump") && grounded) ///faut modifier pour utiliser la bool _jumpPerformed
+        if (Input.GetButtonDown("Jump") && grounded) 
         {
+            _rigidbody.linearVelocity = new Vector3(_rigidbody.linearVelocity.x, 0f, _rigidbody.linearVelocity.z); 
             _rigidbody.AddForce(Vector3.up * JumpForce, ForceMode.Impulse);
-        }
 
-        if (Input.GetKeyDown(KeyCode.LeftShift) /*&& grounded*/) ///faut modifier pour utiliser la bool _jumpPerformed
-        {
-            _rigidbody.AddForce(Vector3.down * JumpForce*1.1f, ForceMode.Impulse);
         }
-        
-        if (!grounded)
-        {
-            _rigidbody.AddForce(Vector3.down * FallSpeed * _rigidbody.mass,ForceMode.Force);
-        }
-
     }
-    
-    
 
 
     private void MovePlayerCam()
@@ -121,7 +102,49 @@ public class S_Controller : MonoBehaviour
 
     }
 
-    
+    private void Raycast()
+    {
+
+        RaycastHit hitinfo;
+        Ray _rayCast = Cam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
+        
+
+
+        Debug.DrawRay(_rayCast.origin, _rayCast.direction * maxDistance, Color.green);
+
+        
+
+           
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            
+            HitedRayCast = null;
+            s_Magnet.Drop();
+            
+        }
+
+        if (Physics.Raycast(_rayCast, out hitinfo, maxDistance, layersToHit))
+        {
+            Debug.DrawRay(_rayCast.origin, _rayCast.direction * maxDistance, Color.red);
+
+
+
+            
+            if (HitedRayCast == null)
+            {
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+
+                    HitedRayCast = hitinfo.transform;
+                    s_Magnet.PickUp(HitedRayCast);
+
+                }
+      
+            }
+
+        }
+        
+    }
 }
     
 
