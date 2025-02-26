@@ -34,15 +34,12 @@ public class S_Magnet : MonoBehaviour
     {
         if (rigidbodyHited != null) 
         { 
-            
             HitedRayCast =null;
         }
     }
 
     private void FixedUpdate()
     {
-
-
         if (HitedRayCast !=null)
         {
 
@@ -65,8 +62,6 @@ public class S_Magnet : MonoBehaviour
             }
 
         }
-        
-
 
     }
     
