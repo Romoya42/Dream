@@ -55,8 +55,7 @@ public class S_Controller : MonoBehaviour
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
-        Cursor.lockState = CursorLockMode.Confined;
-
+        Cursor.visible = false;
     }
 
     //Le reste
@@ -69,7 +68,7 @@ public class S_Controller : MonoBehaviour
     }
     private void Update()
     {
-        Cursor.visible = false;
+        
         MovePlayerCam();
         Raycast();
         
@@ -97,11 +96,13 @@ public class S_Controller : MonoBehaviour
 
     private void MovePlayerCam()
     {
-        xRot -= _lookInputs.y * Sensivity;
-        xRot = Mathf.Clamp(xRot, -90, 90);
-        transform.Rotate(0f, _lookInputs.x * Sensivity, 0f);
-        _playerCamera.transform.localRotation = Quaternion.Euler(xRot, 0f, 0f);
-
+        if (!S_PauseMenu.isPaused)
+        {
+            xRot -= _lookInputs.y * Sensivity;
+            xRot = Mathf.Clamp(xRot, -90, 90);
+            transform.Rotate(0f, _lookInputs.x * Sensivity, 0f);
+            _playerCamera.transform.localRotation = Quaternion.Euler(xRot, 0f, 0f);
+        }
     }
 
     private void Raycast()
