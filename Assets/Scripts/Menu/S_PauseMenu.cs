@@ -4,6 +4,7 @@ public class S_PauseMenu : MonoBehaviour
 {
     public GameObject pauseMenu;
     public static bool isPaused;
+    public Canvas cursorCanvas;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -24,6 +25,7 @@ public class S_PauseMenu : MonoBehaviour
     public void PauseGame()
     {
         pauseMenu.SetActive(true);
+        cursorCanvas.enabled = false;
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.Confined;
         Time.timeScale = 0f;
@@ -33,6 +35,7 @@ public class S_PauseMenu : MonoBehaviour
     public void ResumeGame()
     {
         pauseMenu.SetActive(false);
+        cursorCanvas.enabled = true;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         Time.timeScale = 1f;
