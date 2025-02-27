@@ -64,6 +64,7 @@ public class S_Controller : MonoBehaviour
     {
         
         MovePlayer();
+        
 
     }
     private void Update()
@@ -71,6 +72,7 @@ public class S_Controller : MonoBehaviour
         Cursor.visible = false;
         MovePlayerCam();
         Raycast();
+        
     }
 
     private void MovePlayer() //movement du joueur
