@@ -6,16 +6,22 @@ public class S_GameManager : MonoBehaviour
     public static S_GameManager Instance;
     public bool InGame=false;
     public int Lvl=0;
+    private float Speedlight=0.05f;
     
     public S_ObjectSpawner KeySpawner;
     [HideInInspector] public GameObject GM_Key;
     public S_Lighting Light;
+
+    public S_Door DoorStart;
+    public S_Door DoorExit;
 
     [Header("List Item LVL")]
     public GameObject[] Niv1;
     public GameObject[] Niv2;
     public GameObject[] Niv3;
     public GameObject[] Niv4;
+    public GameObject[] Niv5;
+    public GameObject[] Niv6;
 
     void Awake()
     {
@@ -49,18 +55,47 @@ public class S_GameManager : MonoBehaviour
         {
             case 1:
                 
+                foreach (GameObject obj in Niv1)
+                {
+                    obj.SetActive(true);
+                }
+                DoorStart.Open(1);
                 Light.SetAnimationSpeed(0);
                 break;
 
             case 2:
+                foreach (GameObject obj in Niv1)
+                {
+                    obj.SetActive(false);
+                }
+
+                foreach (GameObject obj in Niv2)
+                {
+                    obj.SetActive(true);
+                }
+
+                DoorStart.Open(1);
                 Light.SetAnimationSpeed(0);
                 break;
 
             case 3:
-                Light.SetAnimationSpeed(0.2f);
+                foreach (GameObject obj in Niv2)
+                {
+                    obj.SetActive(false);
+                }
+
+                foreach (GameObject obj in Niv3)
+                {
+                    obj.SetActive(true);
+                }
+
+                DoorStart.Open(1);
+                Light.SetAnimationSpeed(0);
                 break;
+
             default:
-                Light.SetAnimationSpeed(1.2f);
+                Speedlight*=1.02f
+                Light.SetAnimationSpeed(Mathf.Min(Speedlight, 1.5));
                 break;
         }
     }
