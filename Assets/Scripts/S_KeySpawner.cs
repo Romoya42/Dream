@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Spawner3D : MonoBehaviour
+public class S_KeySpawner : MonoBehaviour
 {
     public GameObject objectToSpawn; // L'objet à spawner
     public MeshCollider spawnArea; // Zone de spawn en 3D
@@ -8,8 +8,9 @@ public class Spawner3D : MonoBehaviour
     public int spawnCount = 1; // Nombre d'objets à spawner
     public float spawnDelay = 1f; // Temps entre chaque spawn
 
-    private void SpawnKey()
+    public void SpawnKey()
     {
+        
         StartCoroutine(SpawnObjects());
     }
 

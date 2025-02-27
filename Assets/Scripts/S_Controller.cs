@@ -64,6 +64,7 @@ public class S_Controller : MonoBehaviour
     {
         
         MovePlayer();
+        
 
     }
     private void Update()

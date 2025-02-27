@@ -4,10 +4,10 @@ public class S_GameManager : MonoBehaviour
 {
 
     public static S_GameManager Instance;
-
-    public int Lvl;
+    public bool InGame=false;
+    public int Lvl=0;
     public float LimitTimer;
-    
+    public S_KeySpawner KeySpawner;
     
     
     public S_Lighting Light;
@@ -36,12 +36,17 @@ public class S_GameManager : MonoBehaviour
 
     public void IncreaseLVl()
     {
+        
         Lvl++;
+        KeySpawner.SpawnKey();
+        Light.RestartAnimation();
         Debug.Log("Tu es niveau" + Lvl);
         switch (Lvl)
         {
             case 1:
+                
                 Light.SetAnimationSpeed(0);
+                
                 break;
 
             case 2:
@@ -67,9 +72,11 @@ public class S_GameManager : MonoBehaviour
     {
         Light.RestartAnimation();
     }
-
     
+    public void RestartGame()
+    {
 
+    }
     
 
 

@@ -6,6 +6,7 @@ public class S_Lighting : MonoBehaviour
     
     public S_GameManager gameManager;
     public float speedMultiplier = 1.0f; 
+    public bool play=false;
      
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -15,7 +16,7 @@ public class S_Lighting : MonoBehaviour
         animator = GetComponent<Animator>();
         
         
-        speedMultiplier=1;
+        
     }
 
     // Update is called once per frame
@@ -23,7 +24,10 @@ public class S_Lighting : MonoBehaviour
     {
         if (animator != null)
         {
-            animator.speed = speedMultiplier; 
+            animator.speed = speedMultiplier*0.1f; 
+        }
+        if (play){
+            RestartAnimation();
         }
     }
 
@@ -35,5 +39,11 @@ public class S_Lighting : MonoBehaviour
     public void RestartAnimation()
     {
         animator.Play("Light", 0, 0f);
+        play=false;
+    }
+
+    public void Loose()
+    {
+        
     }
 }
