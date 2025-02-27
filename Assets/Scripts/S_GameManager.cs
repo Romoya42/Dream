@@ -6,12 +6,16 @@ public class S_GameManager : MonoBehaviour
     public static S_GameManager Instance;
     public bool InGame=false;
     public int Lvl=0;
-    public float LimitTimer;
-    public S_KeySpawner KeySpawner;
     
-    
+    public S_ObjectSpawner KeySpawner;
+    [HideInInspector] public GameObject GM_Key;
     public S_Lighting Light;
-    
+
+    [Header("List Item LVL")]
+    public GameObject[] Niv1;
+    public GameObject[] Niv2;
+    public GameObject[] Niv3;
+    public GameObject[] Niv4;
 
     void Awake()
     {
@@ -38,7 +42,7 @@ public class S_GameManager : MonoBehaviour
     {
         
         Lvl++;
-        KeySpawner.SpawnKey();
+        KeySpawner.Spawner();
         Light.RestartAnimation();
         Debug.Log("Tu es niveau" + Lvl);
         switch (Lvl)
@@ -46,7 +50,6 @@ public class S_GameManager : MonoBehaviour
             case 1:
                 
                 Light.SetAnimationSpeed(0);
-                
                 break;
 
             case 2:
@@ -78,7 +81,10 @@ public class S_GameManager : MonoBehaviour
 
     }
     
-
+    public void Loose()
+    {
+        print("loose");
+    }
 
 
 

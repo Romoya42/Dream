@@ -8,6 +8,7 @@ TagManager:
   - Portal2
   - Start
   - End
+  - Key
   layers:
   - Default
   - TransparentFX
