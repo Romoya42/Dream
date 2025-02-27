@@ -10,7 +10,7 @@ public class S_MainMenu : MonoBehaviour
     
     public void MainMenu()
     {
-        
+        Time.timeScale = 1f;
         SceneManager.LoadScene("Main Menu");
     }
     

@@ -37,6 +37,5 @@ public class S_PauseMenu : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Time.timeScale = 1f;
         isPaused = false;
-        
     }
 }

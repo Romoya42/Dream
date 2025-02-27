@@ -61,10 +61,7 @@ public class S_Controller : MonoBehaviour
     //Le reste
     private void FixedUpdate()
     {
-        
         MovePlayer();
-        
-
     }
     private void Update()
     {
