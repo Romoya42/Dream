@@ -9,6 +9,7 @@ TagManager:
   - Start
   - End
   - Key
+  - Door
   layers:
   - Default
   - TransparentFX
