@@ -15,7 +15,7 @@ public class S_GameManager : MonoBehaviour
     public S_Door DoorStart;
     public S_Door DoorExit;
     private int PreviousLvl=0;
-
+    
     [Header("List Item LVL")]
     
 
@@ -143,8 +143,10 @@ public class S_GameManager : MonoBehaviour
         }
         PreviousLvl=randomvalue;
         GM_Spawner.Spawner();
+        GM_Spawner.DestroyAllSpawnedObjects();
         Light.SetAnimationSpeed(Mathf.Min(Speedlight, 1.5f));
-        DoorStart.Open(1);
+        DoorStart.Open();
+        DoorStart.open=true;
         GM_Spawner.Spawner();  
     }
 

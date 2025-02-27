@@ -26,9 +26,21 @@ public class S_CollideScene : MonoBehaviour
         if (other.CompareTag("End") && S_GameManager.Instance.InGame)
         {
             S_GameManager.Instance.InGame=false;
+            S_GameManager.Instance.DoorExit.Close();
+
+
+        }
+
+        if (other.CompareTag("Door") && S_GameManager.Instance.DoorStart.open)
+        {
+            
+            S_GameManager.Instance.DoorStart.Close();
+            S_GameManager.Instance.DoorStart.open=false;
 
         }
         
     }
+
+    
 
 }
