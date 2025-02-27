@@ -8,6 +8,11 @@ public class S_MainMenu : MonoBehaviour
         SceneManager.LoadScene("Yann");
     }
     
+    public void MainMenu()
+    {
+        SceneManager.LoadScene("Main Menu");
+    }
+    
     public void QuitGame()
     {
         Application.Quit();

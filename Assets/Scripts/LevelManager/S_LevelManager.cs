@@ -7,7 +7,6 @@ public class S_LevelManager : MonoBehaviour
 
     void Start()
     {
-        
         GameObject firstObjectInLevel1 = levels[0][0];
     }
 }
