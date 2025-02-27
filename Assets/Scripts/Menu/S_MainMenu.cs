@@ -5,7 +5,7 @@ public class S_MainMenu : MonoBehaviour
 {
     public void PlayGame()
     {
-        SceneManager.LoadScene("Yann");
+        SceneManager.LoadScene("GameSceneWithPause");
     }
     
     public void MainMenu()
