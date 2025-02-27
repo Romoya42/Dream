@@ -121,6 +121,7 @@ public class S_Controller : MonoBehaviour
         {
             
             HitedRayCast = null;
+            
             s_Magnet.Drop();
             
         }
@@ -136,9 +137,13 @@ public class S_Controller : MonoBehaviour
             {
                 if (Input.GetKeyDown(KeyCode.E))
                 {
-
+                    
                     HitedRayCast = hitinfo.transform;
                     s_Magnet.PickUp(HitedRayCast);
+                    /*if (HitedRayCast.GetComponent<S_Key>() != null)
+                    {
+                        S_GameManager.Instance.getkey=true;
+                    }*/
 
                 }
       

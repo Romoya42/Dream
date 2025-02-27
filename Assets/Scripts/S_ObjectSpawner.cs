@@ -1,5 +1,8 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
+
+
 public class S_ObjectSpawner : MonoBehaviour
 {
     public GameObject[] objectToSpawn; // L'objet à spawner
@@ -9,6 +12,8 @@ public class S_ObjectSpawner : MonoBehaviour
     public float spawnDelay = 1f; // Temps entre chaque spawn
     public GameObject Key;
     public bool randomKey=false;
+    private List<GameObject> spawnedObjects = new List<GameObject>();
+
 
     public void Spawner()
     {
@@ -26,18 +31,39 @@ public class S_ObjectSpawner : MonoBehaviour
     private IEnumerator SpawnObjects()
     {
         Vector3 spawnPosition = GetRandomPointInCollider();
-        if (S_GameManager.Instance.GM_Key==null && randomKey)
-            {
-                S_GameManager.Instance.GM_Key=Instantiate(Key, spawnPosition, Quaternion.identity);
-            }
+        Quaternion randomRotation = Quaternion.Euler(0, Random.Range(0f, 360f), 0); // Rotation aléatoire sur l'axe Y
+        GameObject newObject;
+
+        if (S_GameManager.Instance.GM_Key == null && randomKey)
+        {
+            newObject = Instantiate(Key, spawnPosition, randomRotation);
+            S_GameManager.Instance.GM_Key = newObject;
+        }
         else
         {
-            int randomNumber = Random.Range(0,objectToSpawn.Length);
-            Instantiate(objectToSpawn[randomNumber], spawnPosition, Quaternion.identity);
+            int randomNumber = Random.Range(0, objectToSpawn.Length);
+            newObject = Instantiate(objectToSpawn[randomNumber], spawnPosition, randomRotation);
         }
-        
+
+        spawnedObjects.Add(newObject); 
+        print(spawnedObjects);
         yield return new WaitForSeconds(spawnDelay);
     }
+
+
+    public void DestroyAllSpawnedObjects()
+    {
+        print("suppr");
+        foreach (GameObject obj in spawnedObjects)
+        {
+            if (obj != null)
+            {
+                Destroy(obj);
+            }
+        }
+        spawnedObjects.Clear(); 
+    }
+
 
     private Vector3 GetRandomPointInCollider()
     {
