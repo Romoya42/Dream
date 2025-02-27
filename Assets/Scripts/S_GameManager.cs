@@ -5,23 +5,33 @@ public class S_GameManager : MonoBehaviour
 
     public static S_GameManager Instance;
     public bool InGame=false;
-    public int Lvl=0;
+    public int Lvl=-1;
     private float Speedlight=0.05f;
     
-    public S_ObjectSpawner KeySpawner;
+    public S_ObjectSpawner GM_Spawner;
     [HideInInspector] public GameObject GM_Key;
     public S_Lighting Light;
 
     public S_Door DoorStart;
     public S_Door DoorExit;
+    private int PreviousLvl=0;
 
     [Header("List Item LVL")]
-    public GameObject[] Niv1;
-    public GameObject[] Niv2;
-    public GameObject[] Niv3;
-    public GameObject[] Niv4;
-    public GameObject[] Niv5;
-    public GameObject[] Niv6;
+    
+
+
+    //Levels[Niveau][Composition][Objet]
+    [SerializeField] public GameObject[] Niv1;
+    [SerializeField] public GameObject[] Niv2;
+    [SerializeField] public GameObject[] Niv3;
+    [SerializeField] public GameObject[] Niv4;
+    [SerializeField] public GameObject[] Niv10;
+    [SerializeField] public GameObject[] Niv11;
+    [SerializeField] public GameObject[] Chaos;
+
+
+    
+    
 
     void Awake()
     {
@@ -48,57 +58,97 @@ public class S_GameManager : MonoBehaviour
     {
         
         Lvl++;
-        KeySpawner.Spawner();
+        
+        int randomvalue = Random.Range(0,2);
+        
         Light.RestartAnimation();
         Debug.Log("Tu es niveau" + Lvl);
         switch (Lvl)
         {
             case 1:
+                GM_Spawner.randomKey=false;
+                Niv1[0].SetActive(true);
+
+                Speedlight=0;
                 
-                foreach (GameObject obj in Niv1)
-                {
-                    obj.SetActive(true);
-                }
-                DoorStart.Open(1);
-                Light.SetAnimationSpeed(0);
                 break;
 
             case 2:
-                foreach (GameObject obj in Niv1)
-                {
-                    obj.SetActive(false);
-                }
-
-                foreach (GameObject obj in Niv2)
-                {
-                    obj.SetActive(true);
-                }
-
-                DoorStart.Open(1);
-                Light.SetAnimationSpeed(0);
+                GM_Spawner.randomKey=false;
+                Niv1[0].SetActive(false);
+                Niv2[0].SetActive(true);
+                
+                Speedlight=0;
+                
                 break;
 
             case 3:
-                foreach (GameObject obj in Niv2)
-                {
-                    obj.SetActive(false);
-                }
-
-                foreach (GameObject obj in Niv3)
-                {
-                    obj.SetActive(true);
-                }
-
-                DoorStart.Open(1);
-                Light.SetAnimationSpeed(0);
+                GM_Spawner.randomKey=false;
+                Niv2[0].SetActive(false);
+                Niv3[0].SetActive(true);
+                Speedlight=0.2f;
+                        
                 break;
+
+
+            case 4:
+                GM_Spawner.randomKey=false;
+                Niv3[0].SetActive(false);
+                Niv4[0].SetActive(true);
+                Speedlight=0.4f;      
+                break;    
+
+
+            case >4 and <=9:
+                GM_Spawner.randomKey=true;
+                Niv4[PreviousLvl].SetActive(false);
+                Niv4[randomvalue].SetActive(true);
+                GM_Spawner.spawnCount=(int)(Lvl * 1.5f);
+                Speedlight*=1.02f;                
+                break;    
+
+            case 10:
+                GM_Spawner.randomKey=false;
+                Niv4[PreviousLvl].SetActive(false);
+                Niv10[0].SetActive(true);
+                GM_Spawner.spawnCount=(int)(Lvl * 1.5f);
+                Speedlight*=1.02f;                
+                break;   
+                  
+            case >10 and <=16:
+                GM_Spawner.randomKey=true;
+                Niv10[PreviousLvl].SetActive(false);
+                Niv10[randomvalue].SetActive(true);
+                GM_Spawner.spawnCount=(int)(Lvl * 1.5f);
+                Speedlight*=1.02f;                
+                break;   
+
+            case 17:
+                GM_Spawner.randomKey=true;
+                Niv10[PreviousLvl].SetActive(false);
+                Chaos[0].SetActive(true);
+                GM_Spawner.spawnCount=(int)(Lvl * 1.5f);
+                Speedlight*=1.02f;                
+                break;        
 
             default:
-                Speedlight*=1.02f
-                Light.SetAnimationSpeed(Mathf.Min(Speedlight, 1.5));
+                GM_Spawner.randomKey=true;
+                Chaos[PreviousLvl].SetActive(false);
+                Chaos[randomvalue].SetActive(true);
+                GM_Spawner.spawnCount=(int)(Lvl * 1.5f);
+                Speedlight*=1.02f;                             
                 break;
+
+              
         }
+        PreviousLvl=randomvalue;
+        GM_Spawner.Spawner();
+        Light.SetAnimationSpeed(Mathf.Min(Speedlight, 1.5f));
+        DoorStart.Open(1);
+        GM_Spawner.Spawner();  
     }
+
+    
 
 
     public void StopScene()

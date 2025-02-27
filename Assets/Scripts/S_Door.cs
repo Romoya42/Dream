@@ -10,8 +10,9 @@ public class S_Door : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Open(int direction)
+    public void Open(int direction)
     {
-        transform.rotation.y= (90*direction) + transform.rotation.y;
+        transform.rotation = Quaternion.Euler(0, (90 * direction) + transform.rotation.eulerAngles.y, 0);
+
     }
 }
