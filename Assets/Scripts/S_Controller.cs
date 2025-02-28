@@ -74,7 +74,7 @@ public class S_Controller : MonoBehaviour
     private void MovePlayer() //movement du joueur
     {
 
-        if (Physics.CheckSphere(_groundCheck.position, 0.4f, _maskGround)) grounded = true; else grounded = false;
+        if (Physics.CheckSphere(_groundCheck.position, 0.3f, _maskGround)) grounded = true; else grounded = false;
 
 
         Vector3 MoveVector = transform.TransformDirection(_moveInputs.x, 0f, _moveInputs.y) * Speed;
