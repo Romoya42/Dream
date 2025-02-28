@@ -11,6 +11,7 @@ public class S_Controller : MonoBehaviour
     private Vector2 _lookInputs;
     private bool _jumpPerformed;
     public bool grounded = false;
+    private bool grabbing = false;
     
 
     [SerializeField] private Transform _playerCamera;
@@ -65,7 +66,6 @@ public class S_Controller : MonoBehaviour
     }
     private void Update()
     {
-        
         MovePlayerCam();
         Raycast();
         
@@ -112,12 +112,9 @@ public class S_Controller : MonoBehaviour
 
         Debug.DrawRay(_rayCast.origin, _rayCast.direction * maxDistance, Color.green);
 
-        
-
-           
-        if (Input.GetKeyDown(KeyCode.R))
+        if (Input.GetKeyUp(KeyCode.E) && grabbing)
         {
-            
+            grabbing = false;
             HitedRayCast = null;
             
             s_Magnet.Drop();
@@ -127,28 +124,21 @@ public class S_Controller : MonoBehaviour
         if (Physics.Raycast(_rayCast, out hitinfo, maxDistance, layersToHit))
         {
             Debug.DrawRay(_rayCast.origin, _rayCast.direction * maxDistance, Color.red);
-
-
-
-            
+           
             if (HitedRayCast == null)
             {
-                if (Input.GetKeyDown(KeyCode.E))
+                if (Input.GetKey(KeyCode.E) && !grabbing)
                 {
-                    
+                    grabbing = true;
                     HitedRayCast = hitinfo.transform;
                     s_Magnet.PickUp(HitedRayCast);
                     if (HitedRayCast.GetComponent<S_Key>() != null)
                     {
                         S_SoundManager.instance.Play("Key");
                     }
-
                 }
-      
             }
-
         }
-        
     }
 }
     
