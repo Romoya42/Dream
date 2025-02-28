@@ -117,9 +117,9 @@ Material:
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
-    - _Max: 1015
+    - _Max: 1015.1
     - _Metallic: 0
-    - _Min: 1007
+    - _Min: 1009.25
     - _OcclusionStrength: 1
     - _Parallax: 0.005
     - _QueueControl: 0
@@ -139,7 +139,7 @@ Material:
     - _Col2: {r: 1, g: 0, b: 0, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _Color1: {r: 1, g: 1, b: 1, a: 0}
-    - _Color2: {r: 0.4383931, g: 0.30980393, b: 0.6509804, a: 0}
+    - _Color2: {r: 0.6777853, g: 0.6014151, b: 0.8018868, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
     - _Tiling: {r: 1, g: 1, b: 0, a: 0}
