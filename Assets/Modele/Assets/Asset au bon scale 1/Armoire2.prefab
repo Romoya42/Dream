@@ -2118,6 +2118,10 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 18e7fe9f687e32444be1d43a313e7daa, type: 2}
+    - target: {fileID: 876897001832094116, guid: 8855f0c46071fd64c9bae476ed42b33d, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 18e7fe9f687e32444be1d43a313e7daa, type: 2}
     - target: {fileID: 919132149155446097, guid: 8855f0c46071fd64c9bae476ed42b33d, type: 3}
       propertyPath: m_Name
       value: etagere_lowpoly_mesh (1)
@@ -2151,6 +2155,10 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4709914055983194276, guid: 8855f0c46071fd64c9bae476ed42b33d, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 18e7fe9f687e32444be1d43a313e7daa, type: 2}
+    - target: {fileID: 5951669341418086206, guid: 8855f0c46071fd64c9bae476ed42b33d, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 18e7fe9f687e32444be1d43a313e7daa, type: 2}
