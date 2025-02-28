@@ -11,12 +11,12 @@ GameObject:
   - component: {fileID: 7835804968253678132}
   - component: {fileID: 7282157981711411755}
   - component: {fileID: 934463919104926611}
-  - component: {fileID: 1880476235352058936}
+  - component: {fileID: 8408644669688429627}
   - component: {fileID: 6907088068257251234}
   - component: {fileID: 505574108607231025}
   m_Layer: 6
   m_Name: Key
-  m_TagString: Key
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -29,13 +29,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8753392172490519949}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.3575435, y: 7.2918983, z: -22.712894}
-  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
+  m_LocalRotation: {x: -0.362638, y: -0.4056453, z: 0.6033951, w: 0.5829751}
+  m_LocalPosition: {x: -0.4269436, y: 0.041295767, z: 0.3700629}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 3.825, y: -65.87, z: 89.494}
 --- !u!33 &7282157981711411755
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -43,7 +43,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8753392172490519949}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 8245426573784773463, guid: 2f3abfc38d7761347b2a89de8fb01fde, type: 3}
 --- !u!23 &934463919104926611
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -89,7 +89,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &1880476235352058936
+--- !u!114 &8408644669688429627
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -114,14 +114,14 @@ BoxCollider:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 0
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.031234423, y: 0.31188136, z: 0.120591566}
+  m_Center: {x: 0.008782943, y: -0.00033819425, z: -0.0019495934}
 --- !u!54 &505574108607231025
 Rigidbody:
   m_ObjectHideFlags: 0

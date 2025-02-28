@@ -31,7 +31,7 @@ public class S_Controller : MonoBehaviour
     //Raycast
     public LayerMask layersToHit;
     //private Ray _rayCast;
-    private float maxDistance = 5f;
+    public float maxDistance = 5f;
 
     public S_Magnet s_Magnet;
 
