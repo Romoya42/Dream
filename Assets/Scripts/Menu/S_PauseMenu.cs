@@ -16,13 +16,15 @@ public class S_PauseMenu : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        toggleDof = !toggleDof;
+        ToggleBackgroundUI();
         pauseMenu.SetActive(false);
         isPaused = false;
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.V))
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
             if(isPaused) ResumeGame();
             else PauseGame();
@@ -31,8 +33,8 @@ public class S_PauseMenu : MonoBehaviour
 
     public void PauseGame()
     {
-        pauseMenu.SetActive(true);
         ToggleBackgroundUI();
+        pauseMenu.SetActive(true);
         cursorCanvas.enabled = false;
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.Confined;
