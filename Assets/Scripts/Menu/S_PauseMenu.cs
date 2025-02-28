@@ -35,7 +35,7 @@ public class S_PauseMenu : MonoBehaviour
     {
         ToggleBackgroundUI();
         pauseMenu.SetActive(true);
-        cursorCanvas.enabled = false;
+        //cursorCanvas.enabled = false;
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.Confined;
         Time.timeScale = 0f;
@@ -46,7 +46,7 @@ public class S_PauseMenu : MonoBehaviour
     {
         pauseMenu.SetActive(false);
         ToggleBackgroundUI();
-        cursorCanvas.enabled = true;
+        //cursorCanvas.enabled = true;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         Time.timeScale = 1f;
