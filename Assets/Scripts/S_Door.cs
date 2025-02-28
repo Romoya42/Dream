@@ -15,11 +15,13 @@ public class S_Door : MonoBehaviour
     // Update is called once per frame
     public void Open()
     {
+        S_SoundManager.instance.Play("DoorOpen");
         transform.Rotate(0, 90 * direction, 0);
 
     }
     public void Close()
     {
+        S_SoundManager.instance.Play("DoorSlam");
         transform.Rotate(0, -90 * direction, 0);
         
     }

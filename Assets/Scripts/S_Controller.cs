@@ -138,10 +138,10 @@ public class S_Controller : MonoBehaviour
                     
                     HitedRayCast = hitinfo.transform;
                     s_Magnet.PickUp(HitedRayCast);
-                    /*if (HitedRayCast.GetComponent<S_Key>() != null)
+                    if (HitedRayCast.GetComponent<S_Key>() != null)
                     {
-                        S_GameManager.Instance.getkey=true;
-                    }*/
+                        S_SoundManager.instance.Play("Key");
+                    }
 
                 }
       

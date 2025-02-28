@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 using System;
-public class SoundManager : MonoBehaviour
+public class S_SoundManager : MonoBehaviour
 {
 
-    public Sound[] sounds;
-    public static SoundManager instance;
+    public S_Sound[] sounds;
+    public static S_SoundManager instance;
 
     private void Awake()
     {
@@ -24,17 +24,14 @@ public class SoundManager : MonoBehaviour
 
     private void Start()
     {
-        Play("AMB_Desert");
-        Play("AMB_Corbeau");
-        Play("AMB_Feuilles");
-        Play("AMB_Sable");
-        Play("AMB_BreathingMachine");
+        Play("Ambiance");
+        Play("Stress");
     }
 
 
     public void Play(string name)
     {
-        Sound s = Array.Find(sounds, sounds => sounds.name == name);
+        S_Sound s = Array.Find(sounds, sounds => sounds.name == name);
         if (s == null)
         {
             Debug.LogWarning("Sound: " + name + " not found!");
@@ -50,7 +47,7 @@ public class SoundManager : MonoBehaviour
 
     public void Stop(string name)
     {
-        Sound s = Array.Find(sounds, sound => sound.name == name);
+        S_Sound s = Array.Find(sounds, sound => sound.name == name);
         if (s == null)
         {
             Debug.LogWarning("Sound: " + name + " not found!");

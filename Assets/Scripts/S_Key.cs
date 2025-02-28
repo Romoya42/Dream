@@ -8,6 +8,7 @@ public class S_Key : MonoBehaviour
         if (collision.gameObject.CompareTag("Door"))
         {
             print("door");
+            S_SoundManager.instance.Play("DoorUnlock");
             S_GameManager.Instance.DoorExit.Open();
             Destroy(gameObject);
         }
