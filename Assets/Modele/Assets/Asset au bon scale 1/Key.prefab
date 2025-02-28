@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &8753392172490519949
+--- !u!1 &6768326683221422740
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,12 +8,12 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 7835804968253678132}
-  - component: {fileID: 7282157981711411755}
-  - component: {fileID: 934463919104926611}
-  - component: {fileID: 6907088068257251234}
-  - component: {fileID: 505574108607231025}
-  - component: {fileID: 4919147888610121813}
+  - component: {fileID: 5199961667413140781}
+  - component: {fileID: 4726750552973749554}
+  - component: {fileID: 2909403924708828298}
+  - component: {fileID: 8884844016043129019}
+  - component: {fileID: 2563549253295518504}
+  - component: {fileID: 981115500988274276}
   m_Layer: 6
   m_Name: Key
   m_TagString: Untagged
@@ -21,36 +21,36 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &7835804968253678132
+--- !u!4 &5199961667413140781
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8753392172490519949}
+  m_GameObject: {fileID: 6768326683221422740}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.3575435, y: 7.2918983, z: -22.712894}
-  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
+  m_LocalRotation: {x: -0.362638, y: -0.4056453, z: 0.6033951, w: 0.5829751}
+  m_LocalPosition: {x: -0.42785, y: 0.038744, z: 0.37018}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &7282157981711411755
+  m_LocalEulerAnglesHint: {x: 3.825, y: -65.87, z: 89.494}
+--- !u!33 &4726750552973749554
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8753392172490519949}
+  m_GameObject: {fileID: 6768326683221422740}
   m_Mesh: {fileID: 8245426573784773463, guid: 2f3abfc38d7761347b2a89de8fb01fde, type: 3}
---- !u!23 &934463919104926611
+--- !u!23 &2909403924708828298
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8753392172490519949}
+  m_GameObject: {fileID: 6768326683221422740}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -89,13 +89,13 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &6907088068257251234
+--- !u!65 &8884844016043129019
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8753392172490519949}
+  m_GameObject: {fileID: 6768326683221422740}
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -110,13 +110,13 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.031234423, y: 0.31188136, z: 0.120591566}
   m_Center: {x: 0.008782943, y: -0.00033819425, z: -0.0019495934}
---- !u!54 &505574108607231025
+--- !u!54 &2563549253295518504
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8753392172490519949}
+  m_GameObject: {fileID: 6768326683221422740}
   serializedVersion: 4
   m_Mass: 1
   m_Drag: 1
@@ -137,13 +137,13 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &4919147888610121813
+--- !u!114 &981115500988274276
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8753392172490519949}
+  m_GameObject: {fileID: 6768326683221422740}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a556a867622369c47ad7acba06aaab12, type: 3}
