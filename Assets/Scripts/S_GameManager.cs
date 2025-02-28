@@ -11,11 +11,11 @@ public class S_GameManager : MonoBehaviour
     public S_ObjectSpawner GM_Spawner;
     /*[HideInInspector]*/ public GameObject GM_Key;
     public S_Lighting Light;
-
+    public S_FadeSound Fade;
     public S_Door DoorStart;
     public S_Door DoorExit;
     private int PreviousLvl=0;
-    
+    private float FadeSpeed=120;
     [Header("List Item LVL")]
     
 
@@ -62,7 +62,9 @@ public class S_GameManager : MonoBehaviour
         Lvl++;
         
         int randomvalue = Random.Range(0,2);
-        
+        FadeSpeed*=0.9f;
+        Fade.transitionTime=FadeSpeed;
+        Fade.StartCrossfade();
         Light.RestartAnimation();
         Debug.Log("Tu es niveau" + Lvl);
         switch (Lvl)
