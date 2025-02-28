@@ -25,7 +25,7 @@ public class S_Lighting : MonoBehaviour
         if (S_GameManager.Instance.GM_Key!=null)
         {
             
-
+            
             transform.position = new Vector3(
                 S_GameManager.Instance.GM_Key.transform.position.x,
                 transform.position.y, // On conserve la hauteur actuelle
@@ -56,6 +56,6 @@ public class S_Lighting : MonoBehaviour
 
     public void Loose()
     {
-
+        S_GameManager.Instance.Loose();
     }
 }

@@ -1,5 +1,5 @@
 using UnityEngine;
-
+using TMPro;
 public class S_GameManager : MonoBehaviour
 {
 
@@ -17,7 +17,7 @@ public class S_GameManager : MonoBehaviour
     private int PreviousLvl=0;
     private float FadeSpeed=120;
     [Header("List Item LVL")]
-    
+    public S_MainMenu Menu;
 
 
     //Levels[Niveau][Composition][Objet]
@@ -31,8 +31,12 @@ public class S_GameManager : MonoBehaviour
     
     [SerializeField] public GameObject[] Chaos;
 
+    [Header("3D UI")]
+    public TextMeshPro[] textMesh; 
 
     
+
+
     
 
     void Awake()
@@ -47,7 +51,7 @@ public class S_GameManager : MonoBehaviour
 
     void Start()
     {
-        
+        UpdateText();
     }
 
     // Update is called once per frame
@@ -60,7 +64,7 @@ public class S_GameManager : MonoBehaviour
     {
         
         Lvl++;
-        
+        UpdateText();
         int randomvalue = Random.Range(0,2);
         FadeSpeed*=0.9f;
         Fade.transitionTime=FadeSpeed;
@@ -159,7 +163,14 @@ public class S_GameManager : MonoBehaviour
     }
 
     
+    public void UpdateText()
+    {
+        foreach (TextMeshPro tmp in textMesh)
+        {
+            tmp.text = Lvl.ToString();
 
+        }
+    }
 
     public void StopScene()
     {
@@ -171,13 +182,10 @@ public class S_GameManager : MonoBehaviour
         Light.RestartAnimation();
     }
     
-    public void RestartGame()
-    {
-
-    }
     
     public void Loose()
     {
+        Menu.MainMenu();
         print("loose");
     }
 
