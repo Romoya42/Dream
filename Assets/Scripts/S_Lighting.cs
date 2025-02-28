@@ -56,6 +56,7 @@ public class S_Lighting : MonoBehaviour
 
     public void Loose()
     {
+	print("loose");
         S_GameManager.Instance.Loose();
     }
 }

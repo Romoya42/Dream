@@ -77,7 +77,7 @@ public class S_GameManager : MonoBehaviour
                 GM_Spawner.randomKey=false;
                 Niv1[0].SetActive(true);
                 GM_Spawner.spawnCount=(0);
-                Speedlight=0.2f;
+                Speedlight=0;
                 
                 break;
 
@@ -105,7 +105,7 @@ public class S_GameManager : MonoBehaviour
                 GM_Spawner.randomKey=true;
                 GM_Spawner.spawnCount=(0);
                 Niv3[0].SetActive(false);
-                Niv4[0].SetActive(true);
+                Niv4[randomvalue].SetActive(true);
                 Speedlight=0.4f;      
                 break;    
 
@@ -114,7 +114,6 @@ public class S_GameManager : MonoBehaviour
                 GM_Spawner.randomKey=true;
                 Niv4[PreviousLvl].SetActive(false);
                 Niv5[randomvalue].SetActive(true);
-                GM_Spawner.spawnCount=(int)(Lvl * 1.5f);
                 Speedlight*=1.02f;                
                 break;    
 
@@ -125,10 +124,20 @@ public class S_GameManager : MonoBehaviour
                 GM_Spawner.spawnCount=(int)(Lvl * 1.5f);
                 Speedlight*=1.02f;                
                 break;   
-                  
+            
+	    case 10 :
+                GM_Spawner.randomKey=true;
+                Niv9[0].SetActive(false);
+                Niv10[randomvalue].SetActive(true);
+                GM_Spawner.spawnCount=(int)(Lvl * 1.5f);
+                Speedlight*=1.02f;                
+                break;   
+
+
+
             case >10 and <=16:
                 GM_Spawner.randomKey=true;
-                Niv9[PreviousLvl].SetActive(false);
+                Niv10[PreviousLvl].SetActive(false);
                 Niv10[randomvalue].SetActive(true);
                 GM_Spawner.spawnCount=(int)(Lvl * 1.5f);
                 Speedlight*=1.02f;                
@@ -137,7 +146,7 @@ public class S_GameManager : MonoBehaviour
             case 17:
                 GM_Spawner.randomKey=true;
                 Niv10[PreviousLvl].SetActive(false);
-                Chaos[0].SetActive(true);
+                Chaos[randomvalue].SetActive(true);
                 GM_Spawner.spawnCount=(int)(Lvl * 1.5f);
                 Speedlight*=1.02f;                
                 break;        
@@ -152,14 +161,16 @@ public class S_GameManager : MonoBehaviour
 
               
         }
+	GM_Spawner.DestroyAllSpawnedObjects();
+	GM_Spawner.Spawner();
         GM_Key = GameObject.Find("Key");
         PreviousLvl=randomvalue;
-        GM_Spawner.Spawner();
-        GM_Spawner.DestroyAllSpawnedObjects();
+        
+        
         Light.SetAnimationSpeed(Mathf.Min(Speedlight, 1.5f));
         DoorStart.Open();
         DoorStart.open=true;
-        GM_Spawner.Spawner();  
+        
     }
 
     
