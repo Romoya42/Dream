@@ -73,7 +73,7 @@ public class S_ObjectSpawner : MonoBehaviour
             float x = Random.Range(bounds.min.x, bounds.max.x);
             float y = Random.Range(bounds.min.y, bounds.max.y);
             float z = Random.Range(bounds.min.z, bounds.max.z);
-            return new Vector3(x, y+3, z);
+            return new Vector3(x, y, z);
         }
 
         return Vector3.zero;

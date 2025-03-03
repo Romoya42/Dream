@@ -164,6 +164,10 @@ public class S_GameManager : MonoBehaviour
 	GM_Spawner.DestroyAllSpawnedObjects();
 	GM_Spawner.Spawner();
         GM_Key = GameObject.Find("Key");
+        if (GM_Key == null){
+            GM_Key = GameObject.Find("Key(Clone)");
+        }
+        
         PreviousLvl=randomvalue;
         
         
